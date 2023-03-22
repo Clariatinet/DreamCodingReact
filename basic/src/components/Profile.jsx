@@ -1,12 +1,11 @@
 import React from 'react';
-import Avatar from './Avatar';
+import User from './User';
 
-const Profile = ({ image, name, title, isNew }) => {
+const Profile = () => {
   return (
-    <div className='profile'>
-      <Avatar image={image} isNew={isNew} />
-      <h1>{name}</h1>
-      <p>{title}</p>
+    <div>
+      Profile
+      <User />
     </div>
   );
 };
