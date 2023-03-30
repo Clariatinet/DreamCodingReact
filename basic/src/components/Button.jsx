@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { memo, useMemo } from 'react';
 
-const Button = ({ text, onClick }) => {
+const Button = memo(({ text, onClick }) => {
   console.log('Button', text, 're-rendering');
+  const result = useMemo(() => {
+    calculateSomething();
+  }, []);
   return (
     <div>
       <button
@@ -13,10 +16,16 @@ const Button = ({ text, onClick }) => {
           margin: '0.4rem',
         }}
       >
-        {text}
+        {`${text} ${result}`}
       </button>
     </div>
   );
-};
+});
 
 export default Button;
+
+function calculateSomething() {
+  for (let i = 0; i < 10000; i++) {
+    console.log('hi?');
+  }
+}
